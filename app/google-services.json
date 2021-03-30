@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "430502608334",
-    "project_id": "labiblioteca-23cd1",
-    "storage_bucket": "labiblioteca-23cd1.appspot.com"
+    "project_number": "51227871681",
+    "project_id": "biblioteca-a2668",
+    "storage_bucket": "biblioteca-a2668.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:430502608334:android:db8639674c0c5d4105ff9f",
+        "mobilesdk_app_id": "1:51227871681:android:5d11aec0695d8d216d0740",
         "android_client_info": {
-          "package_name": "es.labiblioteca"
+          "package_name": "com.company.biblioteca"
         }
       },
       "oauth_client": [
         {
-          "client_id": "430502608334-iel333esdvclsv78261jnps5cpqg7tbh.apps.googleusercontent.com",
+          "client_id": "51227871681-itcnla7r6em8fanaq9pmoj0u9fmj9t60.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAxCibUjS20a5DytobaFYKbWJs4_hLdesY"
+          "current_key": "AIzaSyDm0W68QOnsyl6KziRrMLpMrfbd47jNXlo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "430502608334-iel333esdvclsv78261jnps5cpqg7tbh.apps.googleusercontent.com",
+              "client_id": "51227871681-itcnla7r6em8fanaq9pmoj0u9fmj9t60.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
