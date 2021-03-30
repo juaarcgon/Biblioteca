@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:51227871681:android:5d11aec0695d8d216d0740",
         "android_client_info": {
-          "package_name": "com.company.biblioteca"
+          "package_name": "com.example.biblioteca"
         }
       },
       "oauth_client": [
