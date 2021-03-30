@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "430502608334",
+    "project_id": "labiblioteca-23cd1",
+    "storage_bucket": "labiblioteca-23cd1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430502608334:android:db8639674c0c5d4105ff9f",
+        "android_client_info": {
+          "package_name": "es.labiblioteca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430502608334-iel333esdvclsv78261jnps5cpqg7tbh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxCibUjS20a5DytobaFYKbWJs4_hLdesY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430502608334-iel333esdvclsv78261jnps5cpqg7tbh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
