@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="278dp"
-        android:layout_height="207dp"
+        android:layout_width="292dp"
+        android:layout_height="149dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
@@ -20,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.49">
+        app:layout_constraintVertical_bias="0.43">
 
         <EditText
             android:id="@+id/emailEditText"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Acceder"
-                app:backgroundTint="@color/colorPrimaryDark" />
+                app:backgroundTint="@color/colorPrimary" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -74,53 +74,10 @@
 
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:layout_weight="1" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/twitterButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="twitter"
-                android:textColor="@color/black"
-                app:backgroundTint="@color/white" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="8dp"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/facebookButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Facebook"
-                android:textColor="@color/black"
-                app:backgroundTint="@color/white" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="8dp"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/Googlebutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/google"
-                android:text="Google"
-                android:textColor="@color/black"
-                app:backgroundTint="@color/white" />
-        </LinearLayout>
+            android:orientation="horizontal" />
 
     </LinearLayout>
 
@@ -136,5 +93,47 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.446"
         app:srcCompat="@drawable/logo" />
+
+    <Button
+        android:id="@+id/Googlebutton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="236dp"
+        android:drawableStart="@drawable/google"
+        android:text="Google"
+        android:textColor="@android:color/white"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/twitterButton" />
+
+    <Button
+        android:id="@+id/twitterButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="236dp"
+        android:layout_weight="1"
+        android:text="twitter"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/facebookButton" />
+
+    <Button
+        android:id="@+id/facebookButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="236dp"
+        android:layout_weight="1"
+        android:text="Facebook"
+        android:textColor="@color/white"
+        app:backgroundTint="@android:color/holo_blue_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

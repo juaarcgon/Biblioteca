@@ -1,8 +1,8 @@
 package com.example.biblioteca
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.OnBackPressedCallback
 import androidx.activity.OnBackPressedDispatcher
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main_page.*
@@ -17,15 +17,22 @@ class MainPage : AppCompatActivity() {
 
         // Setup
         val bundle= intent.extras
-        val email = bundle?.getString("email")
-        setup(email ?: "")
+        val conf = bundle?.getString("Config")
+        setup()
     }
-    private fun setup(email:String){
+    private fun setup(){
         title = "Biblioteca"
-        emailTextView.text = email
-        logOutbutton.setOnClickListener(){
+        configButton.setOnClickListener(){}
+        logOutButton.setOnClickListener(){
             FirebaseAuth.getInstance().signOut()
             OnBackPressedDispatcher()
+            backToLogin()
         }
+    }
+
+    // volver al login
+    private fun backToLogin() {
+        val authPageIntent = Intent(this, AuthActivity::class.java).apply {}
+        startActivity(authPageIntent)
     }
 }
