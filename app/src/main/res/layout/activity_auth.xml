@@ -7,7 +7,7 @@
     tools:context=".AuthActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/authLayout"
         android:layout_width="292dp"
         android:layout_height="149dp"
         android:layout_marginStart="16dp"
@@ -86,7 +86,7 @@
         android:layout_width="260dp"
         android:layout_height="103dp"
         android:layout_marginTop="112dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/authLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,46 +94,42 @@
         app:layout_constraintVertical_bias="0.446"
         app:srcCompat="@drawable/logo" />
 
-    <Button
-        android:id="@+id/Googlebutton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/facebookImageButton"
+        android:layout_width="79dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="32dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authLayout"
+        app:srcCompat="@drawable/facebook"
+        android:background="@drawable/button_rounded" />
+
+    <ImageButton
+        android:id="@+id/googleImageButton"
+        android:layout_width="83dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="236dp"
-        android:drawableStart="@drawable/google"
-        android:text="Google"
-        android:textColor="@android:color/white"
-        app:backgroundTint="@android:color/holo_red_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/twitterButton" />
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toStartOf="@+id/facebookImageButton"
+        app:layout_constraintTop_toBottomOf="@+id/authLayout"
+        app:srcCompat="@drawable/google"
+        android:background="@drawable/button_rounded" />
 
-    <Button
-        android:id="@+id/twitterButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="236dp"
-        android:layout_weight="1"
-        android:text="twitter"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/facebookButton" />
-
-    <Button
-        android:id="@+id/facebookButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginBottom="236dp"
-        android:layout_weight="1"
-        android:text="Facebook"
-        android:textColor="@color/white"
-        app:backgroundTint="@android:color/holo_blue_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <ImageButton
+        android:id="@+id/twitterImageButton"
+        android:layout_width="81dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/facebookImageButton"
+        app:layout_constraintTop_toBottomOf="@+id/authLayout"
+        app:srcCompat="@drawable/twitter"
+        android:background="@drawable/button_rounded" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

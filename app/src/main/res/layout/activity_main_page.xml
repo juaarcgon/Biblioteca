@@ -25,7 +25,7 @@
         <Button
             android:id="@+id/configButton"
             style="@style/Widget.AppCompat.Button"
-            android:layout_width="80dp"
+            android:layout_width="99dp"
             android:layout_height="45dp"
             android:text="Config"
             app:backgroundTint="@color/colorPrimary"
@@ -35,10 +35,12 @@
         <Button
             android:id="@+id/logOutButton"
             style="@style/Widget.AppCompat.Button"
-            android:layout_width="80dp"
+            android:layout_width="99dp"
             android:layout_height="45dp"
             android:text="Salir"
             app:backgroundTint="@color/colorPrimary"
+            app:layout_constraintEnd_toStartOf="@+id/configButton"
+            app:layout_constraintHorizontal_bias="0.01"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
