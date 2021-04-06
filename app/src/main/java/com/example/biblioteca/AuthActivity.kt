@@ -11,11 +11,13 @@ import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import kotlinx.android.synthetic.main.activity_auth.*
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
@@ -104,11 +106,12 @@ class AuthActivity : AppCompatActivity() {
 
             startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
         }
-        //TODO
+
         // boton facebook
-        /*facebookImageButton.setOnClickListener(){
+        facebookImageButton.setOnClickListener(){
             LoginManager.getInstance().logInWithReadPermissions(this, listOf("email"))
             LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult>{
+
                 override fun onSuccess(result: LoginResult?) {
                     result?.let{
                         val token = it.accessToken
@@ -133,7 +136,7 @@ class AuthActivity : AppCompatActivity() {
                     showAlert()
                 }
             })
-        }*/
+        }
         // boton twitter
         /*twitterImageButton.setOnClickListener {
 
