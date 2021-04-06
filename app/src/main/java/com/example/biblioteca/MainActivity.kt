@@ -5,8 +5,10 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.activity_main_page.*
 
 enum class ProviderType{
@@ -18,32 +20,42 @@ class MainPage : AppCompatActivity() {
         setContentView(R.layout.activity_main_page)
 
         // Setup
-        val bundle= intent.extras
+        val bundle = intent.extras
         val email = bundle?.getString("email")
         val provider = bundle?.getString("provider")
-        val conf = bundle?.getString("Config")
+
         setup()
 
         // guardado de datos
-        val prefs: SharedPreferences.Editor = getSharedPreferences(getString(R.string.prefs_file),Context.MODE_PRIVATE).edit()
-        prefs.putString("email",email)
-        prefs.putString("provider",provider)
+        val prefs: SharedPreferences.Editor = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+        prefs.putString("email", email)
+        prefs.putString("provider", provider)
         prefs.apply()
     }
-    private fun setup(){
+
+    private fun setup() {
         title = "Biblioteca"
-        configButton.setOnClickListener(){
-            showConfig()
+        configButton.setOnClickListener() {
+            val prefs: SharedPreferences = getSharedPreferences(
+                    getString(R.string.prefs_file),
+                    Context.MODE_PRIVATE
+            )
+            val email = prefs.getString("email", null)
+            val provider = prefs.getString("provider", null)
+            if (email != null && provider != null) {
+                showConfig(email, ProviderType.valueOf(provider))
+            }
+
         }
-        logOutButton.setOnClickListener(){
-            val bundle= intent.extras
+        logOutButton.setOnClickListener() {
+            val bundle = intent.extras
             val provider = bundle?.getString("provider")
 
             // Borrado de datos
-            val prefs: SharedPreferences.Editor = getSharedPreferences(getString(R.string.prefs_file),Context.MODE_PRIVATE).edit()
+            val prefs: SharedPreferences.Editor = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
             prefs.clear()
             prefs.apply()
-            if(provider == ProviderType.FACEBOOK.name){
+            if (provider == ProviderType.FACEBOOK.name) {
                 LoginManager.getInstance().logOut()
             }
 
@@ -57,8 +69,11 @@ class MainPage : AppCompatActivity() {
     }
 
     // cambiar a configuracion
-     private fun showConfig() {
-        val configPageIntent = Intent(this, ConfigActivity::class.java).apply {}
+    private fun showConfig(email: String, provider: ProviderType) {
+        val configPageIntent = Intent(this, ConfigActivity::class.java).apply {
+            putExtra("email", email)
+            putExtra("provider", provider.name)
+        }
         startActivity(configPageIntent)
     }
 }

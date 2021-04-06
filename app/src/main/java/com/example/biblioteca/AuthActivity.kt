@@ -32,7 +32,7 @@ class AuthActivity : AppCompatActivity() {
         setContentView(R.layout.activity_auth)
 
         //Analitics events
-        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+        val analytics = FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
         bundle.putString("message", "Integracion de FireBase completada")
         analytics.logEvent("InitScreen", bundle)
