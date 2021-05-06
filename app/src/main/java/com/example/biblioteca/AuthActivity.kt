@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.facebook.CallbackManager
@@ -20,12 +21,20 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.crashlytics.internal.model.CrashlyticsReport
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_config.*
 
 class AuthActivity : AppCompatActivity() {
 
     private val GOOGLE_SIGN_IN = 100
 
     private val callbackManager = CallbackManager.Factory.create()
+
+    // Acceso a la base de datos
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,6 +81,10 @@ class AuthActivity : AppCompatActivity() {
                     passwordEditText.text.toString()
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
+                        db.collection("Usuarios").document("Datos usuario").
+                        set(hashMapOf(
+                            "email" to emailEditText.text.toString(),
+                            "contraseña" to passwordEditText.text.toString()))
                         showMainPage(it.result?.user?.email ?: "", ProviderType.BASIC)
                     } else {
                         showAlert()
@@ -88,6 +101,10 @@ class AuthActivity : AppCompatActivity() {
                     passwordEditText.text.toString()
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
+                        db.collection("Usuarios").document("Datos usuario").
+                        set(hashMapOf(
+                            "email" to emailEditText.text.toString(),
+                            "contraseña" to passwordEditText.text.toString()))
                         showMainPage(it.result?.user?.email ?: "", ProviderType.BASIC)
                     } else {
                         showAlert()
