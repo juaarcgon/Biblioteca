@@ -1,13 +1,18 @@
 package com.example.biblioteca
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,6 +20,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.activity_main_page.*
+import kotlin.collections.Map as Map
 
 enum class ProviderType{
     BASIC,GOOGLE,FACEBOOK,TWITTER
@@ -26,13 +32,22 @@ class MainPage : AppCompatActivity() {
 
     // Conseguimos el número de botones dando un rodeo, dado que no se encuentra documentación
     // relacionada al respecto.
-    private fun numBotones(): Int {
-        var res = 0
-        db.collection("Libros").get().addOnSuccessListener { documents ->
-            for (document in documents) {
-                res++
+    private fun datosLibros(): Map<String,String> {
+
+        var res = hashMapOf<String,String>()
+
+        db.collection("Libros").get().addOnSuccessListener { r ->
+            for (doc in r){
+                res.put("Data.size",doc.data.size.toString())
+                res.put("Data.entries",doc.data.entries.toString())
+                res.put("Data.keys",doc.data.keys.toString())
+                res.put("Data.values",doc.data.values.toString())
             }
+        }.addOnFailureListener {
+            res.put("Fallo","Operación falllida")
         }
+
+
         return res
     }
 
@@ -42,26 +57,11 @@ class MainPage : AppCompatActivity() {
         // Establecemos el layout main
         setContentView(R.layout.activity_main_page)
 
-        //Obtenemos el linear layout donde colocar los botones
-        var llLibros = findViewById<LinearLayout>(R.id.center_horizontal)
-
-        // Parámetros de nuestro layout
-        val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT)
-
-        // Creamos los botones en bucle
-        for (i in 1..numBotones()){
-            var libro = Button(this)
-            libro.setLayoutParams(params)
-            libro.setText("Libro $i")
-            llLibros.addView(libro)
-        }
-
-
         // Setup
         val bundle = intent.extras
         val email = bundle?.getString("email")
         val provider = bundle?.getString("provider")
+        //val n = datosLibros()
 
         setup()
 
@@ -73,7 +73,6 @@ class MainPage : AppCompatActivity() {
     }
 
     private fun setup() {
-        title = "Biblioteca"
         configButton.setOnClickListener() {
             val prefs: SharedPreferences = getSharedPreferences(
                     getString(R.string.prefs_file),
@@ -105,6 +104,22 @@ class MainPage : AppCompatActivity() {
             onBackPressed()
 
         }
+
+        // Creamos los botones en bucle
+        /*for (i in 1..5){
+            val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                40)
+            var libro = Button(this)
+            libro.setBackgroundColor(titleColor)
+            libro.setText("Libro ${i}")
+            libro.layoutParams = params
+
+            libro.setOnClickListener(){
+
+            }
+
+            llBotones.addView(libro)
+        }*/
     }
 
     // cambiar a configuracion
