@@ -28,7 +28,7 @@
             android:layout_height="39dp"
             android:ems="10"
             android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:inputType= "textEmailAddress|textNoSuggestions" />
 
         <Space
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:layout_height="42dp"
             android:ems="10"
             android:hint="Contraseña"
-            android:inputType="textPassword" />
+            android:inputType="textPassword|textNoSuggestions" />
 
         <Space
             android:layout_width="match_parent"
@@ -131,5 +131,16 @@
         app:layout_constraintStart_toEndOf="@+id/facebookImageButton"
         app:layout_constraintTop_toBottomOf="@+id/authLayout"
         app:srcCompat="@drawable/twitter" />
+
+    <Button
+        android:id="@+id/buttonAcc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="145dp"
+        android:layout_marginLeft="145dp"
+        android:layout_marginBottom="103dp"
+        android:text="Ir a main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

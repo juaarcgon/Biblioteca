@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_config.*
+import kotlin.coroutines.EmptyCoroutineContext
 
 class AuthActivity : AppCompatActivity() {
 
@@ -35,17 +37,20 @@ class AuthActivity : AppCompatActivity() {
     // Acceso a la base de datos
     private val db = FirebaseFirestore.getInstance()
 
+    // Tag
+    val tag = "Biblioteca"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-        //Analitics events
+        // Analitics events
         val analytics = FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
         bundle.putString("message", "Integracion de FireBase completada")
         analytics.logEvent("InitScreen", bundle)
 
-        // setup
+        // Setup
         setup()
         session()
     }
@@ -158,6 +163,10 @@ class AuthActivity : AppCompatActivity() {
 
         }*/
 
+        // Botón para ir a la main activity directamente
+        buttonAcc.setOnClickListener(){
+            showMainPage("None", ProviderType.BASIC)
+        }
     }
 
     // alerta si falla
@@ -176,6 +185,7 @@ class AuthActivity : AppCompatActivity() {
             putExtra("email", email)
             putExtra("provider", provider.name)
         }
+
         startActivity(mainPageIntent)
     }
 
@@ -204,9 +214,11 @@ class AuthActivity : AppCompatActivity() {
                 }
             }catch (e:ApiException){
                 showAlert()
+            }
         }
     }
-}
+
+
 
 }
 
