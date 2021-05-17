@@ -48,20 +48,26 @@ class MainPage : AppCompatActivity() {
 
         val genera_Id: Int = 1110
         val genera = Button(this)
-        genera.setText("Genera contenido")
+        genera.setText("En español")
         genera.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
         genera.setId(genera_Id)
         genera.x = 0f
         genera.y = 500f
         genera.setOnClickListener(){
             // Creamos la lista de libros
-            db.collection("Libros").get().addOnSuccessListener { r ->
-                for (doc in r){
-                    var libro: Libro = doc.toObject(Libro::class.java)
-                    libros.add(libro)
+            db.collection("Libros").get().addOnSuccessListener { coleccion ->
+                val iterador = coleccion.iterator()
+                iterador.forEach{
+                    libros.add(it.toObject(Libro::class.java))
+                    if (it.id != null){
+                        Log.d(tag,"Está entrando en el bucle")
+                    }
+                    Log.d(tag,"Datos documento: ID-${it.id}, DATA-${it.data}, " +
+                            "REFERENCE-${it.reference}, METADATA-${it.metadata}")
                 }
+                Log.d(tag,"Exito al escuchar libros: "+libros.toString()+" Colección: "+coleccion.toString())
             }.addOnFailureListener {
-                Log.d(tag,"Fallo al conectar a la base de datos")
+                Log.w(tag,"Fallo al conectar", it)
             }
             Log.d(tag,"Exito metiendo los libros"+libros.toString())
         }

@@ -163,10 +163,6 @@ class AuthActivity : AppCompatActivity() {
 
         }*/
 
-        // Botón para ir a la main activity directamente
-        buttonAcc.setOnClickListener(){
-            showMainPage("None", ProviderType.BASIC)
-        }
     }
 
     // alerta si falla
