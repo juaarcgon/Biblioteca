@@ -1,4 +1,4 @@
 package com.example.biblioteca
 
-data class Libro(var autor: String = "", var id: Int = 0, var numPaginas: Int = 0,
-                 var referencia: String = "", var titulo: String = "")
+data class Libro(var Autor: String = "", var ID: Int = 0, var NumeroPaginas: Int = 0,
+                 var Referencia: String = "", var Titulo: String = "")

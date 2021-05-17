@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -44,49 +45,36 @@ class MainPage : AppCompatActivity() {
         val provider = bundle?.getString("provider")
 
         setup()
+
         var libros = mutableListOf<Libro>()
 
-        val genera_Id: Int = 1110
-        val genera = Button(this)
-        genera.setText("En español")
-        genera.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
-        genera.setId(genera_Id)
-        genera.x = 0f
-        genera.y = 500f
-        genera.setOnClickListener(){
-            // Creamos la lista de libros
-            db.collection("Libros").get().addOnSuccessListener { coleccion ->
-                val iterador = coleccion.iterator()
-                iterador.forEach{
-                    libros.add(it.toObject(Libro::class.java))
-                    if (it.id != null){
-                        Log.d(tag,"Está entrando en el bucle")
-                    }
-                    Log.d(tag,"Datos documento: ID-${it.id}, DATA-${it.data}, " +
-                            "REFERENCE-${it.reference}, METADATA-${it.metadata}")
-                }
-                Log.d(tag,"Exito al escuchar libros: "+libros.toString()+" Colección: "+coleccion.toString())
-            }.addOnFailureListener {
-                Log.w(tag,"Fallo al conectar", it)
+        // Creamos la lista de libros
+        db.collection("Libros").get().addOnSuccessListener { coleccion ->
+            for (doc in coleccion) {
+                libros.add(doc.toObject(Libro::class.java));
             }
-            Log.d(tag,"Exito metiendo los libros"+libros.toString())
-        }
-        constraintLayout.addView(genera)
-
-        // Creamos los botones en bucle
-        for (l in libros){
-            val libro_Id: Int = 1111 + l.id
-            val libro = Button(this)
-            libro.setText(l.titulo)
-            //libro.setText("Libro generado")
-            libro.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
-            libro.setId(libro_Id)
-            libro.x = 0f
-            libro.y = 500f
-            libro.setOnClickListener(){
+            // Creamos los botones en bucle
+            for (l in libros){
+                val libro_Id: Int = 1110 + l.ID
+                val libro = Button(this)
+                libro.setText(l.Titulo)
+                libro.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+                libro.setId(libro_Id)
+                libro.x = 0f
+                libro.y = 500f
+                libro.setOnClickListener(){
                     // Abre el libro
+                    val abierto = Intent(this, Lectura::class.java).apply {
+                        putExtra("email", email)
+                        putExtra("provider", provider)
+                        putExtra("link", l.Referencia)
+                    }
+                    startActivity(abierto)
+                }
+                llBotones.addView(libro)
             }
-            llBotones.addView(libro)
+        }.addOnFailureListener {
+            Log.w(tag,"Fallo al conectar", it)
         }
 
         // Guardado de datos
