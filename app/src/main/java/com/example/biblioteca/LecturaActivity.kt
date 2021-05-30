@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
+import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -30,17 +32,28 @@ class Lectura : AppCompatActivity() {
         val email = bundle?.getString("email")
         val provider = bundle?.getString("provider")
         val libro = bundle?.getString("referencia")
-        val link = bundle?.getString("link")
-        var ref = "https://google.com"
 
+
+        var myWebView = findViewById<WebView>(R.id.vistaLectura)
+        myWebView.getSettings().setJavaScriptEnabled(true)
+        myWebView.loadUrl("http://drive.google.com/viewerng/viewer?embedded=true&url=" + libro)
+        myWebView.setWebViewClient(WebViewClient())
+        myWebView.setInitialScale(1)
+        myWebView.getSettings().setBuiltInZoomControls(true)
+        myWebView.getSettings().setUseWideViewPort(true)
+
+        myWebView.setWebChromeClient(WebChromeClient());
 
         setup()
 
         // Guardado de datos
-        val prefs: SharedPreferences.Editor = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+        val prefs: SharedPreferences.Editor =
+            getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
         prefs.putString("email", email)
         prefs.putString("provider", provider)
         prefs.apply()
+
+
     }
 
     private fun setup() {
@@ -51,4 +64,5 @@ class Lectura : AppCompatActivity() {
         }
 
     }
+
 }

@@ -23,6 +23,7 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_auth.*
+import kotlinx.android.synthetic.main.activity_lectura.*
 import kotlinx.android.synthetic.main.activity_main_page.*
 import java.io.File
 import java.io.FileOutputStream
@@ -66,6 +67,7 @@ class MainPage : AppCompatActivity() {
             }
             // Creamos los botones en bucle
             for (l in libros){
+
                 val libro_Id: Int = 1110 + l.ID
                 val libro = Button(this)
                 libro.setText(l.Titulo)
@@ -75,12 +77,14 @@ class MainPage : AppCompatActivity() {
                 libro.y = 500f
                 libro.setOnClickListener(){
                     // Abre el libro
-                    var webview: WebView = WebView(this)
-                    setContentView(webview)
-                    webview.getSettings().setJavaScriptEnabled(true)
-                    webview.loadUrl("http://drive.google.com/viewerng/viewer?embedded=true&url=" + l.Referencia)
+                    val lecturaI = Intent(this, Lectura::class.java).apply {
+                        putExtra("email", email)
+                        putExtra("provider", provider)
+                        putExtra("referencia", l.Referencia)
+                    }
+                    startActivity(lecturaI)
                 }
-                llBotones.addView(libro)
+                    llBotones.addView(libro)
             }
         }.addOnFailureListener {
             Log.w(tag,"Fallo al conectar", it)
