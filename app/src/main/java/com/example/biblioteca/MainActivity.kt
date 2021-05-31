@@ -21,7 +21,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.activity_lectura.*
 import kotlinx.android.synthetic.main.activity_main_page.*
@@ -41,7 +40,6 @@ class MainPage : AppCompatActivity() {
 
     // Acceso a la base de datos
     private val db = FirebaseFirestore.getInstance()
-    val storage = Firebase.storage
     // Tag
     val tag = "Biblioteca"
 

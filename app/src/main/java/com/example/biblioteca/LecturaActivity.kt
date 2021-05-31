@@ -3,13 +3,9 @@ package com.example.biblioteca
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
-import android.view.Window
 import android.webkit.WebChromeClient
-import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.barteksc.pdfviewer.PDFView
 import com.google.firebase.ktx.Firebase

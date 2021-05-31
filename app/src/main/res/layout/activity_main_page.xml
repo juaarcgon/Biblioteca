@@ -26,11 +26,8 @@
         <Button
             android:id="@+id/logOutButton"
             style="@style/Widget.AppCompat.Button"
-            android:layout_width="147dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="116dp"
-            android:layout_marginLeft="116dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Cerrar Sesion"
             app:backgroundTint="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,8 +36,7 @@
         <LinearLayout
             android:id="@+id/llBotones"
             android:layout_width="match_parent"
-            android:layout_height="560dp"
-            android:layout_marginBottom="71dp"
+            android:layout_height="650dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
