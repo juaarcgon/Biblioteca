@@ -25,7 +25,6 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_config.*
 import kotlin.coroutines.EmptyCoroutineContext
 
 class AuthActivity : AppCompatActivity() {
@@ -158,10 +157,6 @@ class AuthActivity : AppCompatActivity() {
                 }
             })
         }
-        // boton twitter
-        /*twitterImageButton.setOnClickListener {
-
-        }*/
 
     }
 

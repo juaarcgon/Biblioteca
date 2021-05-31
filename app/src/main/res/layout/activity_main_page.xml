@@ -22,27 +22,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
-        <Button
-            android:id="@+id/configButton"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="99dp"
-            android:layout_height="45dp"
-            android:text="Config"
-            app:backgroundTint="@color/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/logOutButton"
             style="@style/Widget.AppCompat.Button"
-            android:layout_width="99dp"
-            android:layout_height="45dp"
-            android:text="Salir"
+            android:layout_width="147dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="116dp"
+            android:layout_marginLeft="116dp"
+            android:layout_marginTop="4dp"
+            android:text="Cerrar Sesion"
             app:backgroundTint="@color/colorPrimary"
-            app:layout_constraintEnd_toStartOf="@+id/configButton"
-            app:layout_constraintHorizontal_bias="0.01"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <LinearLayout
             android:id="@+id/llBotones"
             android:layout_width="match_parent"

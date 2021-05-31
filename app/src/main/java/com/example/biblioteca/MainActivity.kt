@@ -98,18 +98,7 @@ class MainPage : AppCompatActivity() {
     }
 
     private fun setup() {
-        configButton.setOnClickListener() {
-            val prefs: SharedPreferences = getSharedPreferences(
-                    getString(R.string.prefs_file),
-                    Context.MODE_PRIVATE
-            )
-            val email = prefs.getString("email", null)
-            val provider = prefs.getString("provider", null)
-            if (email != null && provider != null) {
-                showConfig(email, ProviderType.valueOf(provider))
-            }
 
-        }
         logOutButton.setOnClickListener() {
             val bundle = intent.extras
             val provider = bundle?.getString("provider")
@@ -131,12 +120,5 @@ class MainPage : AppCompatActivity() {
         }
     }
 
-    // cambiar a configuracion
-    private fun showConfig(email: String, provider: ProviderType) {
-        val configPageIntent = Intent(this, ConfigActivity::class.java).apply {
-            putExtra("email", email)
-            putExtra("provider", provider.name)
-        }
-        startActivity(configPageIntent)
-    }
+
 }
