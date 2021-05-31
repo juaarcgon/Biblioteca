@@ -1,38 +1,18 @@
 package com.example.biblioteca
 
-import android.annotation.SuppressLint
+
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
-import android.provider.DocumentsContract
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebView
 import android.widget.*
 import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
-import kotlinx.android.synthetic.main.activity_auth.*
-import kotlinx.android.synthetic.main.activity_lectura.*
 import kotlinx.android.synthetic.main.activity_main_page.*
-import java.io.File
-import java.io.FileOutputStream
-import java.io.InputStream
-import java.io.OutputStream
-import java.net.HttpURLConnection
-import java.net.URL
-import kotlin.math.log
-import kotlin.collections.Map as Map
 
 enum class ProviderType{
     BASIC,GOOGLE,FACEBOOK,TWITTER
@@ -41,7 +21,6 @@ class MainPage : AppCompatActivity() {
 
     // Acceso a la base de datos
     private val db = FirebaseFirestore.getInstance()
-    val storage = Firebase.storage
     // Tag
     val tag = "Biblioteca"
 
